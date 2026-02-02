@@ -3,7 +3,7 @@ Have a demonstratable project every six weeks. I need to have a plan for extendi
 
 ## First six weeks:
 ### Week 1
-- Create this GitHub repository and draft a 6-6-6 plan.
+- Create this GitHub repository and draft a 6-6-6 plan. ✅
 
 ### Week 2
 - Mr. Small is out this week, spend this week making a full project proposal, including a Bill of Materials.
