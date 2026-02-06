@@ -9,3 +9,6 @@ Today I worked on my GitHub repository more. I added an initial BOM to my [proje
 
 ### Day 2 - 2026-02-04
 Today I really didn't feel like working on the GitHub repo so I started on some [Python code](./Code/initial.py).
+
+### Day 3 - 2026-02-06
+I think my proposal is all ready, just need to find a specific thermal printer to buy. Today I mostly just worked on my Health 2 online stuff during class.
