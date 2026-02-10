@@ -32,12 +32,12 @@ Possible extensions for if I finish the project early:
 ### Realistic Extensions
 - **Multiple compartments**: Expand to 4-slot carousel or drawer system with individual timers
 - **Sound effects/LEDs**: Add audio/visual feedback for countdown milestones and release events
-- **Early retrieval system**: Override to retrieve messages before timer expires using a password
+- **Early retrieval system**: Override to retrieve messages before timer finishes using a password, might just include this from the beginning though
 - **Motor driver board**: Replace Arduino with direct Pi motor control
 
 ### Ambitious Extensions
-- **Touchscreen interface**: Replace keyboard + character LCD with a touchscreen
-- **Smaller form factor**: Miniaturize the design once functionality is proven
+- **Proper Display**: Replace character LCD with a full-fledged display hooked up to the Pi
+- **Smaller form factor**: Make it smaller once it is functional
 
 ### Stretch Goals
-- **Remote web interface**: Remote monitoring of compartment status and countdowns
+- **Remote web interface**: Remote monitoring of compartment status and countdowns because it would be cool
