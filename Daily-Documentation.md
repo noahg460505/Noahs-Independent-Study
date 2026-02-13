@@ -7,17 +7,17 @@ Today I discussed my initial ideas with Mr. Small and how this independent study
 ### Day 2 - 2026-02-02
 Today I worked on my GitHub repository more. I added an initial BOM to my [project proposal](./Project-Proposal.md) and created [Daily-Documentation.md](Daily-Documentation.md)
 
-### Day 2 - 2026-02-04
+### Day 3 - 2026-02-04
 Today I really didn't feel like working on the GitHub repo so I started on some [Python code](./Code/initial.py).
 
-### Day 3 - 2026-02-06
+### Day 4 - 2026-02-06
 I think my proposal is all ready, just need to find a specific thermal printer to buy. Today I mostly just worked on my Health 2 online stuff during class.
 
 ## Week 3
-### Day 4 - 2026-02-10
+### Day 5 - 2026-02-10
 Today I once again just worked on Health 2 online stuff while waiting for Mr. Small, he told me he was gonna look at the project proposal this weekend but he was busy, hopefully next class?
 
-### Day 5 - 2026-02-12
+### Day 6 - 2026-02-12
 Today I worked more on the Python code because I was tired
 why do i only ever feel like doing code when im tired
 
