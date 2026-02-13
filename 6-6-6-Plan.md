@@ -6,11 +6,11 @@ Have a demonstratable project every six weeks. I need to have a plan for extendi
 - Create this GitHub repository and draft a 6-6-6 plan. ✅
 
 ### Week 2
-- Mr. Small is out this week, spend this week making a full project proposal, including a Bill of Materials.
+- Mr. Small is out this week, spend this week making a full project proposal, including a Bill of Materials. ✅
 
 ### Week 3
-- Show Mr. Small my project proposal and discuss the proposal with him.
-- If my proposal is ready, begin prototyping and/or do preliminary CAD.
+- Show Mr. Small my project proposal and discuss the proposal with him. ❌ He was pretty busy with his Robotics 1 class this week and didn't have time to review it over the weekend
+- If my proposal is ready, begin prototyping and/or do preliminary CAD. 🟠 I worked on preliminary code, which is sorta the same concept
 
 ### Week 4
 - Further prototyping and CAD work. Hopefully I'll have a screen and printer by this point for prototyping.
