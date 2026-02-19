@@ -13,7 +13,7 @@ Have a demonstratable project every six weeks. I need to have a plan for extendi
 - If my proposal is ready, begin prototyping and/or do preliminary CAD. 🟠 I worked on preliminary code, which is sorta the same concept
 
 ### Week 4
-- Further prototyping and CAD work. Hopefully I'll have a screen and printer by this point for prototyping.
+- Further prototyping and CAD work. Hopefully I'll have a screen and printer by this point for prototyping. ❌ Don't have printer yet, I'm just using a character LCD though so idk what I was thinking when I wrote this initially
 
 ### Week 5
 - More prototyping and more CAD
