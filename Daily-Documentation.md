@@ -23,6 +23,7 @@ why do i only ever feel like doing code when im tired
 
 Next class I think I'll start prototyping, assuming Mr. Small looks at my project proposal over the weekend.
 
+## Week 4
 ### Day 7 - 2026-02-17
 Today I talked to Mr. Small and discussed my project and ordering a thermal printer for the project. I also worked on the Python code a bit more.
 
