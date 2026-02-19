@@ -28,5 +28,5 @@ Next class I think I'll start prototyping, assuming Mr. Small looks at my projec
 Today I talked to Mr. Small and discussed my project and ordering a thermal printer for the project. I also worked on the Python code a bit more.
 
 ### Day 8- 2026-02-19
-Today I was pretty unproductive, I installed the Arduino IDE on my laptop to start working on the code for the Arduino end, didn't really do anything though :P
+Worked on Arduino code for most of the time, once I got the Arduino IDE working on my laptop.
 I'm tired, my birthday was yesterday, I stayed up kinda late
