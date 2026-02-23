@@ -36,3 +36,4 @@ I'm tired, my birthday was yesterday, I stayed up kinda late
 Today I did wiring for the character LCD and got the display fully working! I finished the [display Arduino code](./Code/arduinoSelfStudyCode.ino) and worked on the [Python code](./Code/main.py) a bit more.  
 ![No Messages Waiting](/Media/IMG_20260223_114446606_MP.jpg)   
 ![Countdown](/Media/IMG_20260223_114510147_MP.jpg)   
+[Video](/Media/VID_20260223_114533695.mp4)
