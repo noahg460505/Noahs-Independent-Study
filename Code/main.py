@@ -9,10 +9,10 @@ available_slots = list(range(MAX_MESSAGES)) # list of available slots
 
 PASSWORD = "purple" # admin password
 BAUD_RATE = 9600
-PORT = "/dev/ttyUSB0"
+PORT = "/dev/ttyACM0"
 
 try:
-    ser = serial.Serial(PORT, BAUD_RATE)
+    ser = serial.Serial(PORT, BAUD_RATE, timeout=1)
 except serial.SerialException:
     ser = None
     print("No serial connected.")
@@ -55,21 +55,69 @@ def sudo(command):
                 return
             try:
                 message_number = int(parts[2])  # Convert to int
-                with lock:  # Need lock since eject modifies shared data
+                with lock:
                     eject(message_number)
             except ValueError:
                 print("{eject}: message number must be an integer")
 
+        # Had Claude Sonnet 4.5 make the sudo serial commands because I wanted to test my wiring ASAP
+        # sudo serial --freeze
+        if command.startswith("sudo serial --freeze") or command.startswith("sudo serial -f"):
+            # TODO: Implement serial freeze logic
+            # This should pause the countdown_thread from sending serial commands
+            print("Serial freeze not yet implemented")
+
+        # sudo serial --unfreeze
+        if command.startswith("sudo serial --unfreeze") or command.startswith("sudo serial -uf"):
+            # TODO: Implement serial unfreeze logic
+            # This should resume the countdown_thread sending serial commands
+            print("Serial unfreeze not yet implemented")
+
+        # sudo serial --write {input}
+        if command.startswith("sudo serial --write") or command.startswith("sudo serial -w"):
+            if command.startswith("sudo serial --write"):
+                serial_input = command[len("sudo serial --write"):].strip()
+            else:  # sudo serial -w
+                serial_input = command[len("sudo serial -w"):].strip()
+
+            if not serial_input:
+                print("{serial --write}: missing required argument: input")
+                return
+
+            if ser:
+                ser.write(f"{serial_input}\n".encode("utf-8"))
+                print(f"Sent to serial: {serial_input}")
+            else:
+                print("No serial connection available")
+
+        # # sudo time --{command} {message number}
+        # # VERY UNFINISHED, MOSTLY JUST COPIED FROM sudo eject
+        # if command.startswith("sudo time"):
+        #     parts = command.split()
+        #     if len(parts) < 3:
+        #         print("{time}: missing required argument(s)")
+        #         return
+        #         # add more specific error, such as missing message number and/or missing command argument
+        #     if command.startswith("sudo time set"):
+        #         try:
+        #             message_number = int(parts[2])  # Convert to int
+        #             time_to_set = int(parts[3])
+        #             with lock:  # Need lock since eject modifies shared data
+        #                 # message number time remaining =
+        #         except ValueError:
+        #             print("{time}: message number must be an integer")
+
+
 
         # TODO: Add more sudo commands
-        #  time set {message number}
-        #  time remaining {message number}
-        #  time subtract {message number}
-        #  time add {message number}
+        #  time --set {message number}
+        #  time --remaining {message number} (or -r)
+        #  time --subtract {message number} (or -s)
+        #  time --add {message number} (or -a)
         #  journal {message_number} (shows actively updating countdown in terminal)
-        #  serial freeze
-        #  serial unfreeze
-        #  serial write {input}
+        #  serial --freeze (or -f)
+        #  serial --unfreeze (or -uf)
+        #  serial --write {input} (or -w)
 
 
 def eject(message_number):
@@ -82,35 +130,53 @@ def eject(message_number):
         available_slots.sort()  # sort the slots to keep them in the correct order
         del messages[message_number]  # remove message from dictionary
 
+
 def countdown_thread():
     display_index = 0
     last_display_switch = time.time()
+    ejecting_message = None
+    eject_display_until = 0
 
     while True:
         current_time = time.time()
 
         with lock:
             expired = []
-            for message_number, message_data in messages.items():
+            for message_id, message_data in messages.items():
                 remaining = message_data["end_time"] - current_time
 
                 if remaining <= 0:
-                    expired.append(message_number)
+                    expired.append(message_id)
 
-            for message_number in expired:
-                eject(message_number)
+            for message_id in expired:
+                eject(message_id)
+                ejecting_message = message_id
+                eject_display_until = current_time + 5  # Display for 5 seconds
 
-            if messages and (current_time - last_display_switch >= 5):
+            # Display ejection message for 5 seconds
+            if ejecting_message is not None and current_time < eject_display_until:
+                if ser:
+                    ser.write(f"[ejecting] {ejecting_message}\n".encode("utf-8"))
+            # Display no messages waiting
+            elif not messages:
+                if ser:
+                    ser.write(f"[no_messages]\n".encode("utf-8"))
+            # Display countdown
+            elif messages:
                 active_message_numbers = list(messages.keys())
                 if active_message_numbers:
-                    display_index = display_index % len(active_message_numbers)
-                    message_number = active_message_numbers[display_index]
+                    # Switch to next message every 5 seconds
+                    if current_time - last_display_switch >= 5:
+                        display_index = (display_index + 1) % len(active_message_numbers)
+                        last_display_switch = current_time
+
+                    # Send update every second for current message
+                    message_id = active_message_numbers[display_index % len(active_message_numbers)]
+                    remaining = messages[message_id]["end_time"] - current_time
 
                     if ser:
-                        ser.write(f"[display] {message_number}\n".encode("utf-8"))
+                        ser.write(f"[display] {message_id} {int(remaining)}\n".encode("utf-8"))
 
-                    display_index = (display_index + 1) % len(active_message_numbers)
-                    last_display_switch = current_time
         time.sleep(1)
 
 def parse_time_input(time_input):
