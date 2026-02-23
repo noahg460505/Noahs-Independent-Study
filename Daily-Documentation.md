@@ -8,7 +8,7 @@ Today I discussed my initial ideas with Mr. Small and how this independent study
 Today I worked on my GitHub repository more. I added an initial BOM to my [project proposal](./Project-Proposal.md) and created [Daily-Documentation.md](Daily-Documentation.md)
 
 ### Day 3 - 2026-02-04
-Today I really didn't feel like working on the GitHub repo so I started on some [Python code](./Code/initial.py).
+Today I really didn't feel like working on the GitHub repo so I started on some [Python code](./Code/main.py).
 
 ### Day 4 - 2026-02-06
 I think my proposal is all ready, just need to find a specific thermal printer to buy. Today I mostly just worked on my Health 2 online stuff during class.
@@ -27,6 +27,10 @@ Next class I think I'll start prototyping, assuming Mr. Small looks at my projec
 ### Day 7 - 2026-02-17
 Today I talked to Mr. Small and discussed my project and ordering a thermal printer for the project. I also worked on the Python code a bit more.
 
-### Day 8- 2026-02-19
+### Day 8 - 2026-02-19
 Worked on Arduino code for most of the time, once I got the Arduino IDE working on my laptop.
 I'm tired, my birthday was yesterday, I stayed up kinda late
+
+## Week 5
+### Day 9 - 2026-02-23
+Today I did wiring for the character LCD and got the display fully working! I finished the [display Arduino code](./Code/arduinoSelfStudyCode.ino) and worked on the [Python code](./Code/main.py) a bit more.
