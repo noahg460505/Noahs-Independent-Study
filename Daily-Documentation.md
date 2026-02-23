@@ -33,4 +33,6 @@ I'm tired, my birthday was yesterday, I stayed up kinda late
 
 ## Week 5
 ### Day 9 - 2026-02-23
-Today I did wiring for the character LCD and got the display fully working! I finished the [display Arduino code](./Code/arduinoSelfStudyCode.ino) and worked on the [Python code](./Code/main.py) a bit more.
+Today I did wiring for the character LCD and got the display fully working! I finished the [display Arduino code](./Code/arduinoSelfStudyCode.ino) and worked on the [Python code](./Code/main.py) a bit more.  
+![No Messages Waiting](/Media/IMG_20260223_114446606_MP.jpg)   
+![Countdown](/Media/IMG_20260223_114510147_MP.jpg)   
