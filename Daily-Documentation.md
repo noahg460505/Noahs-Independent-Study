@@ -36,4 +36,7 @@ I'm tired, my birthday was yesterday, I stayed up kinda late
 Today I did wiring for the character LCD and got the display fully working! I finished the [display Arduino code](./Code/arduinoSelfStudyCode.ino) and worked on the [Python code](./Code/main.py) a bit more.  
 ![No Messages Waiting](/Media/IMG_20260223_114446606_MP.jpg)   
 ![Countdown](/Media/IMG_20260223_114510147_MP.jpg)   
-[Video](/Media/VID_20260223_114533695.mp4)
+[Video](/Media/VID_20260223_114533695.mp4)   
+
+### Day 10 - 2026-02-25
+Today I tried to get some motor stuff running for testing, but I instead just shorted everything, including my laptop's USB-A port, thought I fully fried my laptop, it wouldn't turn back on, not even the keyboard backlight or display would light up. Fixed it by holding the power button for a minute, then waiting 30 minutes. Luckily, my laptop survived, it powered on after half-an-hour. Didn't get much done other than fail to get motors running and shorting stuff and nearly killing my rather expensive laptop.
