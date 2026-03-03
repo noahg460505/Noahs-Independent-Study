@@ -43,10 +43,10 @@ Today I tried to get some motor stuff running for testing, but I instead just sh
 
 ### Day 11 - 2026-02-27
 Today I just spent all of class diagnosing wiring issues, I was really struggling getting stuff to work. It appears that last class I fried the Arduino, it wouldn't do anything. I was trying to get motors to spin all class before I realized "Oh, I probably fried the H-Bridge too" so next class I'll replace the H-Bridge and run some tests.  
-![Dead Arduino](/Media/dead-arduino.jpg)  
+![Dead Arduino](/Media/2026-02-27-dead-arduino.jpg)  
 
 ## Week 6
 ### Day 12 - 2026-03-03
-Yup, that H-Bridge was dead, everything works now!  
-![Dead H-Bridge](/Media/dead-h-bridge.jpg)  
+Yup, that H-Bridge was dead, after replacing it everything works!  
+![Dead H-Bridge](/Media/2026-03-03-dead-h-bridge.jpg)  
 Supposed to have a deliverable this week, dunno how possible that's gonna be since I don't yet have the printer, although maybe the code + fully working wiring could count as a deliverable? I'll have to ask!  
