@@ -36,7 +36,7 @@ I'm tired, my birthday was yesterday, I stayed up kinda late
 Today I did wiring for the character LCD and got the display fully working! I finished the [display Arduino code](./Code/arduinoSelfStudyCode.ino) and worked on the [Python code](./Code/main.py) a bit more.  
 ![No Messages Waiting](/Media/2026-02-23-no-messages-waiting.jpg)   
 ![Countdown](/Media/2026-02-23-countdown-test.jpg)   
-[Video](/Media/2026-02-23-Countdown-Test.mp4)   
+[Countdown Test Video](/Media/2026-02-23-Countdown-Test.mp4)   
 
 ### Day 10 - 2026-02-25
 Today I tried to get some motor stuff running for testing, but I instead just shorted everything, including my laptop's USB-A port, thought I fully fried my laptop, it wouldn't turn back on, not even the keyboard backlight or display would light up. Fixed it by holding the power button for a minute, then waiting 30 minutes. Luckily, my laptop survived, it powered on after half-an-hour. Didn't get much done other than fail to get motors running and shorting stuff and nearly killing my rather expensive laptop.
@@ -50,3 +50,7 @@ Today I just spent all of class diagnosing wiring issues, I was really strugglin
 Yup, that H-Bridge was dead, after replacing it everything works!  
 ![Dead H-Bridge](/Media/2026-03-03-dead-h-bridge.jpg)  
 Supposed to have a deliverable this week, dunno how possible that's gonna be since I don't yet have the printer, although maybe the code + fully working wiring could count as a deliverable? I'll have to ask!  
+
+![Wiring on Table](/Media/2026-03-03-wiring-on-table.jpg)   
+![Wiring Top View](/Media/2026-03-03-wiring-top-view.jpg)   
+[Motor Test Video](/Media/2026-03-03-Motor-Test.mp4)   
