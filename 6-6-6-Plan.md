@@ -20,7 +20,7 @@ Have a demonstratable project every six weeks. I need to have a plan for extendi
 
 ### Week 6
 - Have a working proof-of-concept prototype for demonstration, can be a bit clunky and ugly. 🟠 Minus thermal printer, code and wiring all work!
-- Draft plan for the next six weeks of my 6-6-6 plan. ✅
+- Draft plan for the next six weeks of my 6-6-6 plan. 🟠 Waiting for thermal printer before doing that
 - Write a reflection on how the project is going so far and where I plan to take it. ✅
 
 ## First Six Weeks Reflection
