@@ -2,14 +2,18 @@
 import threading
 import time
 import serial
+import getpass
+from termcolor import colored
+import signal
+import sys
 
 # Config
-MAX_MESSAGES = 1 # maximum amount of messages that can be stored inside the box
+MAX_MESSAGES = 2 # maximum amount of messages that can be stored inside the box
 available_slots = list(range(MAX_MESSAGES)) # list of available slots
 
 PASSWORD = "purple" # admin password
 BAUD_RATE = 9600
-PORT = "/dev/ttyACM0"
+PORT = "/dev/ttyACM1"
 
 try:
     ser = serial.Serial(PORT, BAUD_RATE, timeout=1)
@@ -24,101 +28,131 @@ message_counter = 0
 lock = threading.Lock()
 
 def sudo(command):
-    password_input = input("[sudo] password for administrator: ")
-    if password_input == PASSWORD:
+    # Outputs a list of sudo commands
+    if command.startswith("sudo help"):
+        print('''COMMANDS:
+    viewmessage {message number}    Shows information about a specified message
+    eject {message number}    Ejects specified message
+    serial {ARGUMENT}    Serial monitor controls
+        sudo serial --help for list of commands
+    time {ARGUMENT}    Time/countdown controls
+            sudo time --help for a list of commands
+    journal {message number}    Shows constantly updating countdown
+    ''')
 
-        # sudo viewmessage {message number}
-        if command.startswith("sudo viewmessage"):
-            parts = command.split()
-            if len(parts) < 3:
-                print("{viewmessage}: missing required argument: message number")
-                return
-            try:
-                message_number = int(parts[2])
-                print(f"Message Number: {message_number}")
-                with lock:
-                    message_data = messages.get(int(message_number))
-                    if message_data:
-                        remaining = message_data["end_time"] - time.time()
-                        print(f"Message: {message_data['text']}")
-                        print(f"Time remaining: {remaining:.1f} seconds")
-                    else:
-                        print("Message not found")
-            except ValueError:
-                print("{viewmessage}: message number must be an integer")
+    # Outputs a list of all sudo serial arguments/commands
+    elif command.startswith("sudo serial --help") or command.startswith("sudo serial -h"):
+        print('''ARGUMENTS:
+    -f, --freeze,    Pauses serial output NOT YET IMPLEMENTED
+    -uf, --unfreeze,    Unpauses serial output NOT YET IMPLEMENTED
+    -w, --write,    Writes to serial output
+    -c, --connect,    Connects to serial if not already connected NOT YET IMPLEMENTED
+    ''')
+    else:
+        password_input = getpass.getpass(prompt="[sudo] password for administrator: ")
+        if password_input == PASSWORD:
 
-        # sudo eject {message number}
-        if command.startswith("sudo eject"):
-            parts = command.split()
-            if len(parts) < 3:
-                print("{eject}: missing required argument: message number")
-                return
-            try:
-                message_number = int(parts[2])  # Convert to int
-                with lock:
-                    eject(message_number)
-            except ValueError:
-                print("{eject}: message number must be an integer")
+            # sudo viewmessage {message number}
+            if command.startswith("sudo viewmessage"):
+                parts = command.split()
+                if len(parts) < 3:
+                    error_print("{viewmessage}: missing required argument: message number")
+                    return
+                try:
+                    message_number = int(parts[2])
+                    print(f"Message Number: {message_number}")
+                    with lock:
+                        message_data = messages.get(int(message_number))
+                        if message_data:
+                            remaining = message_data["end_time"] - time.time()
+                            print(f"Message: {message_data['text']}")
+                            print(f"Time remaining: {remaining:.1f} seconds")
+                        else:
+                            error_print("Message not found")
+                except ValueError:
+                    error_print("{viewmessage}: message number must be an integer")
 
-        # Had Claude Sonnet 4.5 make the sudo serial commands because I wanted to test my wiring ASAP
-        # sudo serial --freeze
-        if command.startswith("sudo serial --freeze") or command.startswith("sudo serial -f"):
-            # TODO: Implement serial freeze logic
-            # This should pause the countdown_thread from sending serial commands
-            print("Serial freeze not yet implemented")
+            # sudo eject {message number}
+            if command.startswith("sudo eject"):
+                parts = command.split()
+                if len(parts) < 3:
+                    error_print("{eject}: missing required argument: message number")
+                    return
+                try:
+                    message_number = int(parts[2])  # Convert to int
+                    with lock:
+                        eject(message_number)
+                except ValueError:
+                    error_print("{eject}: message number must be an integer")
 
-        # sudo serial --unfreeze
-        if command.startswith("sudo serial --unfreeze") or command.startswith("sudo serial -uf"):
-            # TODO: Implement serial unfreeze logic
-            # This should resume the countdown_thread sending serial commands
-            print("Serial unfreeze not yet implemented")
+            # Had Claude Sonnet 4.5 make the sudo serial commands because I wanted to test my wiring ASAP
+            # May/may not rewrite myself
+            # sudo serial --freeze
+            if command.startswith("sudo serial --freeze") or command.startswith("sudo serial -f"):
+                # TODO: Implement serial freeze logic
+                # This should pause the countdown_thread from sending serial commands
+                print("Serial freeze not yet implemented")
 
-        # sudo serial --write {input}
-        if command.startswith("sudo serial --write") or command.startswith("sudo serial -w"):
-            if command.startswith("sudo serial --write"):
-                serial_input = command[len("sudo serial --write"):].strip()
-            else:  # sudo serial -w
-                serial_input = command[len("sudo serial -w"):].strip()
+            # sudo serial --unfreeze
+            if command.startswith("sudo serial --unfreeze") or command.startswith("sudo serial -uf"):
+                # TODO: Implement serial unfreeze logic
+                # This should resume the countdown_thread sending serial commands
+                print("Serial unfreeze not yet implemented")
 
-            if not serial_input:
-                print("{serial --write}: missing required argument: input")
-                return
+            # sudo serial --write {input}
+            if command.startswith("sudo serial --write") or command.startswith("sudo serial -w"):
+                if command.startswith("sudo serial --write"):
+                    serial_input = command[len("sudo serial --write"):].strip()
+                else:  # sudo serial -w
+                    serial_input = command[len("sudo serial -w"):].strip()
 
-            if ser:
-                ser.write(f"{serial_input}\n".encode("utf-8"))
-                print(f"Sent to serial: {serial_input}")
-            else:
-                print("No serial connection available")
+                if not serial_input:
+                    print("{serial --write}: missing required argument: input")
+                    return
 
-        # # sudo time --{command} {message number}
-        # # VERY UNFINISHED, MOSTLY JUST COPIED FROM sudo eject
-        # if command.startswith("sudo time"):
-        #     parts = command.split()
-        #     if len(parts) < 3:
-        #         print("{time}: missing required argument(s)")
-        #         return
-        #         # add more specific error, such as missing message number and/or missing command argument
-        #     if command.startswith("sudo time set"):
-        #         try:
-        #             message_number = int(parts[2])  # Convert to int
-        #             time_to_set = int(parts[3])
-        #             with lock:  # Need lock since eject modifies shared data
-        #                 # message number time remaining =
-        #         except ValueError:
-        #             print("{time}: message number must be an integer")
+                if ser:
+                    ser.write(f"{serial_input}\n".encode("utf-8"))
+                    print(f"Sent to serial: {serial_input}")
+                else:
+                    error_print("No serial connection available")
+
+            # sudo serial connect
+            # can be run to connect serial while program is already running
+            if command.startswith("sudo serial --connect") or command.startswith("sudo serial -c"):
+                # TODO: Implement serial connection
+                print("Serial connect not yet implemented")
 
 
+            # # sudo time --{command} {message number}
+            # # VERY UNFINISHED, MOSTLY JUST COPIED FROM sudo eject
+            # if command.startswith("sudo time"):
+            #     parts = command.split()
+            #     if len(parts) < 3:
+            #         print("{time}: missing required argument(s)")
+            #         return
+            #         # add more specific error, such as missing message number and/or missing command argument
+            #     if command.startswith("sudo time set"):
+            #         try:
+            #             message_number = int(parts[2])  # Convert to int
+            #             time_to_set = int(parts[3])
+            #             with lock:  # Need lock since eject modifies shared data
+            #                 # message number time remaining =
+            #         except ValueError:
+            #             print("{time}: message number must be an integer")
 
-        # TODO: Add more sudo commands
-        #  time --set {message number}
-        #  time --remaining {message number} (or -r)
-        #  time --subtract {message number} (or -s)
-        #  time --add {message number} (or -a)
-        #  journal {message_number} (shows actively updating countdown in terminal)
-        #  serial --freeze (or -f)
-        #  serial --unfreeze (or -uf)
-        #  serial --write {input} (or -w)
 
+
+            # TODO: Add more sudo commands
+            #  time --set {message number}
+            #  time --remaining {message number} (or -r)
+            #  time --subtract {message number} (or -s)
+            #  time --add {message number} (or -a)
+            #  journal {message_number} (shows actively updating countdown in terminal)
+            #  serial --freeze (or -f)
+            #  serial --unfreeze (or -uf)
+            #  serial --write {input} (or -w)
+        else:
+            error_print("Password Incorrect")
 
 def eject(message_number):
     if message_number in messages:
@@ -241,6 +275,9 @@ def parse_time_input(time_input):
         print("Invalid Time Input - could not parse numbers")
         return None
 
+def error_print(error_string):
+    print(colored(error_string, "red"))
+
 
 def input_message():
     message = input("Enter a message: ")
@@ -279,6 +316,13 @@ def input_message():
             }
         return message, time_input, slot
 
+# Got this code from https://stackoverflow.com/questions/1112343/how-do-i-capture-sigint-in-python
+def signal_handler(sig, frame):
+    print('\nProgram Terminated')
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
+
 def main():
     # start countdown thread
     thread = threading.Thread(target=countdown_thread, daemon=True)
@@ -290,3 +334,4 @@ def main():
             continue
 
 main()
+
