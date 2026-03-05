@@ -1,7 +1,7 @@
 # 6-6-6 Plan
 Have a demonstratable project every six weeks. I need to have a plan for extending my project if I finish early.
 
-## First six weeks:
+## First Six Weeks:
 ### Week 1
 - Create this GitHub repository and draft a 6-6-6 plan. ✅
 
@@ -16,15 +16,21 @@ Have a demonstratable project every six weeks. I need to have a plan for extendi
 - Further prototyping and CAD work. Hopefully I'll have a screen and printer by this point for prototyping. ❌ Don't have printer yet, I'm just using a character LCD though so idk what I was thinking when I wrote this initially
 
 ### Week 5
-- More prototyping and more CAD
+- More prototyping and more CAD 🟠 More code and wiring, no CAD
 
 ### Week 6
-- Have a working proof-of-concept prototype for demonstration, can be a bit clunky and ugly.
-- Draft plan for the next six weeks of my 6-6-6 plan.
-- Write a reflection on how the project is going so far and where I plan to take it.
+- Have a working proof-of-concept prototype for demonstration, can be a bit clunky and ugly. 🟠 Minus thermal printer, code and wiring all work!
+- Draft plan for the next six weeks of my 6-6-6 plan. ✅
+- Write a reflection on how the project is going so far and where I plan to take it. ✅
 
-## Second six weeks:
+## First Six Weeks Reflection
+So I didn't really do much of this, still don't have a printer. BUT, I did basically do all the wiring and code for the project! During the next six weeks I want to integrate the thermal printer (as soon as I receive it) and also begin work on CAD and assembly of a housing for this whole system, probably with only one slot, although I might try to do two slots for the initial prototype.
+
+I'll write out my 6-6-6 plan as soon as I get the thermal printer, because I really need it to know how to set my goals for the following weeks, if I get it at the start of next week that'd be optimal.
+
+## Second Six Weeks:
 ### Week 7
+
 
 ### Week 8
 
@@ -37,7 +43,7 @@ Have a demonstratable project every six weeks. I need to have a plan for extendi
 ### Week 12
 - Polished, functional prototype, made from CAD designs.
 
-## Third six weeks:
+## Third Six Weeks:
 ### Week 13
 
 ### Week 14
