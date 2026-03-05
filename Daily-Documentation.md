@@ -54,3 +54,14 @@ Supposed to have a deliverable this week, dunno how possible that's gonna be sin
 ![Wiring on Table](/Media/2026-03-03-wiring-on-table.jpg)   
 ![Wiring Top View](/Media/2026-03-03-wiring-top-view.jpg)   
 [Motor Test Video](/Media/2026-03-03-Motor-Test.mp4)   
+
+### Day 13 - 2026-03-05
+So today I realized two things, one is that I'll either need an Arduino Mega or a second Arduino Uno to add the thermal printer and possibly a servo if I add it. The other thing I realized is that most thermal printers don't have an autocutter, including mine, so I'll need to somehow mechanically cut the paper as it comes out of the thermal printer, it has a serrated edge that you are supposed to yank the paper against.  
+
+    Current ideas:  
+    - have some feeder wheels to yank it against the serrated edge  
+    - have a razor blade that slides against the paper with a linear actuator with the paper under tension
+
+## Week 7
+Day 14 - 2026-03-09
+  
