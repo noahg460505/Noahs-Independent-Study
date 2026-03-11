@@ -63,5 +63,6 @@ So today I realized two things, one is that I'll either need an Arduino Mega or 
     - have a razor blade that slides against the paper with a linear actuator with the paper under tension
 
 ## Week 7
-Day 14 - 2026-03-09
+### Day 14 - 2026-03-09
+I mianly just worked on a personal project today during class because I'm still waiting on the thermal printer (Supposed to show up next week). Next class I might work on figuring out wiring up a second Arduino for running the printer.
   
