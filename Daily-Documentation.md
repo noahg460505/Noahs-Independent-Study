@@ -64,5 +64,8 @@ So today I realized two things, one is that I'll either need an Arduino Mega or 
 
 ## Week 7
 ### Day 14 - 2026-03-09
-I mianly just worked on a personal project today during class because I'm still waiting on the thermal printer (Supposed to show up next week). Next class I might work on figuring out wiring up a second Arduino for running the printer.
+I mainly just worked on a personal project today during class because I'm still waiting on the thermal printer (Supposed to show up next week). Next class I might work on figuring out wiring up a second Arduino for running the printer.
+
+### Day 15 - 2026-03-11
+Honestly just worked on my Health 2 online stuff and also my personal project, really just waiting on the thermal printer for prototyping.
   
