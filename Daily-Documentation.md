@@ -71,3 +71,10 @@ Honestly just worked on my Health 2 online stuff and also my personal project, r
   
 ### Day 16 - 2026-03-13
 Thermal printer has been delayed again, will be here on March 20th apparently. Since I really don't wanna do nothing for another week I think I'll try to begin on CAD.
+
+## Week 8
+### Day 17 - 2026-03-17
+CAD
+
+### Day 17 - 2026-03-19
+more CAD
