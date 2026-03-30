@@ -76,5 +76,9 @@ Thermal printer has been delayed again, will be here on March 20th apparently. S
 ### Day 17 - 2026-03-17
 CAD
 
-### Day 17 - 2026-03-19
+### Day 18 - 2026-03-19
 more CAD
+
+## Week 9
+### Day 19 - 2026-03-30
+Today I worked on a bit more CAD and also got an update on shipping for my thermal printer, it's arriving today! It keeps getting delayed but it should finally show up, then I can get it wired and finally begin making a housing for it.
