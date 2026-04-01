@@ -82,3 +82,8 @@ more CAD
 ## Week 9
 ### Day 19 - 2026-03-30
 Today I worked on a bit more CAD and also got an update on shipping for my thermal printer, it's arriving today! It keeps getting delayed but it should finally show up, then I can get it wired and finally begin making a housing for it.
+
+### Day 20 - 2026-04-01
+Today I FINALLY got my thermal printer, I did some test prints and got it working. I had to do a really jank solution to get it running as it needed 9v to work properly, but we only have 4 and 8 battery packs, so I had to get an 8 battery pack and then put wires to jump where two more batteries would be. I also tested how I would actually cut the paper, I found a box cutter blade segment works rather well, I think I'll have my friend Kevin design a motorized thing for moving the razor blade along the paper, as he is much better at moving, motorized systems than I am.
+![Thermal Printer](/Media/2026-04-01-thermal-printer.jpg)  
+![Cutter Test](/Media/2026-04-01-cutter-test.jpg)  
