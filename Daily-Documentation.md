@@ -91,3 +91,17 @@ Today I FINALLY got my thermal printer, I did some test prints and got it workin
 
 ### Day 21 - 2026-04-03
 I was sick at home
+
+### Day 22 - 2026-04-09
+Tested the cutter system that Kevin helped me design, it works, somewhat, but there are some issue I need to deal with. Firstly, it is running at 9v, the motor has so much torque that the hard stop against the motor case doesn't stall the motor, it instead powers through the hard stop and breaks it off. Secondly, it has no idea if it has reached the end of the gear rack, but I might not need to fix this. I'll brainstorm how to fix this next class
+![Cutter Mechanism](/Media/2026-04-09-cutter-mechanism.jpg)  
+![It broke :c](/Media/2026-04-09-it-broke.jpg)  
+
+### Day 23 - 2026-04-13
+Today I just did some CAD, trying to figure out solutions to my problems. Namely, I designed a tip cover for the blade, hopefully this will help it cut easier and need less torque.
+![Tip Cover On](/Media/2026-04-13-cover-on.jpg)  
+![Tip Cover Off](/Media/2026-04-13-cover-off.jpg)  
+
+### Day 24 - 2026-04-15
+Today I cleaned up the CAD a bit, extended the rail the rack runs along, beefed up the hard stop, and added some mounting stuff.
+![CAD Update](/Media/2026-04-15-cad-update.jpg)  
