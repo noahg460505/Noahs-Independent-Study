@@ -105,3 +105,5 @@ Today I just did some CAD, trying to figure out solutions to my problems. Namely
 ### Day 24 - 2026-04-15
 Today I cleaned up the CAD a bit, extended the rail the rack runs along, beefed up the hard stop, and added some mounting stuff.
 ![CAD Update](/Media/2026-04-15-cad-update.png)  
+At the end of class, I was able to start printing some stuff.
+![Slicer Screenshot](/Media/2026-04-15-slicer-screenshot.png)  
