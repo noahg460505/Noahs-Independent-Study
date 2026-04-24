@@ -116,5 +116,5 @@ Today I was visiting OSU, so I wasn't in class, but my parts I started printing 
 
 ## Week 12
 ### Day 26 - 2026-04-22
-Today I tested some of my new printed parts, and it still isn't cutting reliably, aghhhh
-![Cutter Test](/Media/2026-04-22-Cutter-Test.mp4)  
+Today I tested some of my new printed parts, and it still isn't cutting reliably, aghhhh  
+[Cutter Test](/Media/2026-04-22-Cutter-Test-Compressed.mp4)  
