@@ -118,3 +118,11 @@ Today I was visiting OSU, so I wasn't in class, but my parts I started printing 
 ### Day 26 - 2026-04-22
 Today I tested some of my new printed parts, and it still isn't cutting reliably, aghhhh  
 [Cutter Test](/Media/2026-04-22-Cutter-Test-Compressed.mp4)  
+
+### Day 27 - 2026-04-24
+I entirely forgot what I did
+
+## Week 13
+### Day 28 - 2026-04-28
+I sharpened the knife when I was at home over the weekend, and now it cuts well, yippee!
+All I gotta do now is add a stop for preventing the knife from getting stuck retracted. Will use a pen spring for that to hold it engaged.
