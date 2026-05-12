@@ -125,4 +125,18 @@ I entirely forgot what I did
 ## Week 13
 ### Day 28 - 2026-04-28
 I sharpened the knife when I was at home over the weekend, and now it cuts well, yippee!
-All I gotta do now is add a stop for preventing the knife from getting stuck retracted. Will use a pen spring for that to hold it engaged.
+All I gotta do now is add a stop for preventing the knife from getting stuck retracted. Will use a pen spring for that to hold it engaged.  
+  
+### Day 29 - 2026-04-30
+I got the stopper thing working using the pen spring and a small 3D printed part I designed
+[Cutter Return Test](/Media/2026-04-30-Cutter-Return-Test.mp4)  
+
+## Week 14
+### Days 29, 30, & 30
+### 2026-05-04, 2026-05-06, 2026-05-08
+Just been working on CAD this week, I also printed some mounting standoffs for the printer
+![Standoffs in Prusa Slicer](/Media/2026-05-06-standoffs-slicer.png)
+
+## Week 15
+### Day 31 - 2026-05-12
+Updating documentation, then I'll further work on CAD
