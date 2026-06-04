@@ -1,57 +1,60 @@
 #include <LiquidCrystal.h>
+#include <Servo.h>
 
-// Initialize LCD with your specific pins (RS, E, D4, D5, D6, D7)
+// LCD pins
 const int rs = 13, en = 12, d4 = 11, d5 = 10, d6 = 9, d7 = 8;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
-//the motor will be controlled by the motor A pins on the motor driver
+// Motor A (Cutter)
+const int PWMA = 5;
+const int AIN1 = 7;
+const int AIN2 = 6;
 
-//driver for the motor A
-const int PWMA = 5;           //speed control pin on the motor driver for motor A
-const int AIN1 = 7;           //control pin 1 on the motor driver for the motor A
-const int AIN2 = 6;           //control pin 2 on the mot
-const int BIN1 = 2;           //control pin 1 on the motor driver for the motor B
-const int BIN2 = 4;           //control pin 2 on the motor driver for the motor B
-const int PWMB = 3;           //speed control pin on the motor driver for motor B
+// Servo (Ejector)
+#include <Servo.h>
+Servo ejectServo;
+const int SERVO_PIN = A0;
 
+// servo home and eject limits
+const int SERVO_HOME = 20;   // locked
+const int SERVO_EJECT = 0;   // open
 
-String inputBuffer = ""; 
-int motorSpeed = 0; 
+String inputBuffer = "";
 
 void setup() {
   lcd.begin(16, 2);
   lcd.print("Starting...");
+
   Serial.begin(9600);
 
-  // Set the motor control pins as outputs
+  // Motor A setup (cutter)
   pinMode(AIN1, OUTPUT);
   pinMode(AIN2, OUTPUT);
   pinMode(PWMA, OUTPUT);
 
-  pinMode(BIN1, OUTPUT);
-  pinMode(BIN2, OUTPUT);
-  pinMode(PWMB, OUTPUT);
-  
-  // Initialize motors to be stopped
   digitalWrite(AIN1, LOW);
   digitalWrite(AIN2, LOW);
   analogWrite(PWMA, 0);
 
-  digitalWrite(BIN1, LOW);
-  digitalWrite(BIN2, LOW);
-  analogWrite(PWMB, 0);
+  // Servo setup
+  ejectServo.attach(SERVO_PIN);
+  ejectServo.write(SERVO_HOME);
+  delay(500);
+  ejectServo.detach();
+
+  lcd.clear();
+  lcd.print("Ready");
 }
 
 void loop() {
-  // wacky non-blocking code i found for recieving serial
   while (Serial.available() > 0) {
     char c = Serial.read();
-    
-    if (c == '\n') { 
+
+    if (c == '\n') {
       processCommand(inputBuffer);
-      inputBuffer = ""; 
+      inputBuffer = "";
     } else if (c != '\r') {
-      inputBuffer += c; 
+      inputBuffer += c;
     }
   }
 }
@@ -60,19 +63,22 @@ void processCommand(String command) {
   command.trim();
   int firstSpace = command.indexOf(' ');
 
-  // eject the requested message specificied after [eject] command
-  if (command.startsWith("[eject]")) { 
+  // eject message
+  if (command.startsWith("[eject]")) {
     if (firstSpace != -1) {
       int message_number = command.substring(firstSpace + 1).toInt();
+      display("ejecting", message_number, 0);
+      cutReceipt();
       eject(message_number);
     }
-  } 
+  }
+
   // display countdown
-  else if (command.startsWith("[display]")) { 
+  else if (command.startsWith("[display]")) {
     if (firstSpace != -1) {
       String data = command.substring(firstSpace + 1);
       int secondSpace = data.indexOf(' ');
-      
+
       if (secondSpace != -1) {
         int msg_id = data.substring(0, secondSpace).toInt();
         int remaining_seconds = data.substring(secondSpace + 1).toInt();
@@ -80,27 +86,44 @@ void processCommand(String command) {
       }
     }
   }
-  // show ejection message
+
+  // eject + display
   else if (command.startsWith("[ejecting]")) {
     if (firstSpace != -1) {
       int message_number = command.substring(firstSpace + 1).toInt();
       display("ejecting", message_number, 0);
+      cutReceipt();
       eject(message_number);
     }
   }
-  // show no messages
+
+  // no messages
   else if (command.startsWith("[no_messages]")) {
     display("no_messages", 0, 0);
+  }
+
+  // TEST EJECT
+  else if (command.startsWith("[test_eject]")) {
+    Serial.println("TEST: eject");
+    display("ejecting", 999, 0);
+    eject(999);
+  }
+
+  // TEST CUTTER
+  else if (command.startsWith("[test_cut]")) {
+    Serial.println("TEST: cutter");
+    cutReceipt();
   }
 }
 
 void display(String mode, int msg_id, int remaining_seconds) {
   lcd.clear();
   lcd.setCursor(0, 0);
-  
+
   if (mode == "countdown") {
     lcd.print("Msg #");
     lcd.print(msg_id);
+
     lcd.setCursor(0, 1);
     lcd.print(remaining_seconds);
   }
@@ -116,29 +139,50 @@ void display(String mode, int msg_id, int remaining_seconds) {
 }
 
 void eject(int message_number) {
-  Serial.print("[eject] Ejected message: ");
+  Serial.print("[eject] Message: ");
   Serial.println(message_number);
+
+  // ensure servo is active
+  ejectServo.attach(SERVO_PIN);
+
+  // OPEN (must stay powered until fully extended)
+  ejectServo.write(SERVO_EJECT);
+  delay(2000);   // attempt to open for 2 seconds
+
+  // pause at full extension, wait a full 20 seconds for user to put drawer back in and then latch
+  // if I had more time, I would've added a button to tell it when the drawer has reached the back
+  delay(20000);
+
+  // close
+  ejectServo.write(SERVO_HOME);
+  delay(1000);    // attempt to close for 1 second
+
+  ejectServo.detach(); // stop running servo
+}
+
+void cutReceipt() {
+  // Move cutter forward
+  Serial.println("[cut] Cutting");
+  digitalWrite(AIN1, HIGH);
+  digitalWrite(AIN2, LOW);
+  analogWrite(PWMA, 255);
+  delay(400); 
   
-  if (message_number < 1) {
-    // Run motor A forward for 2 seconds
-    digitalWrite(AIN1, HIGH);
-    digitalWrite(AIN2, LOW);
-    analogWrite(PWMA, 200);
-    delay(2000);
-    // Stop motor A
-    digitalWrite(AIN1, LOW);
-    digitalWrite(AIN2, LOW);
-    analogWrite(PWMA, 0);
-  }
-  if (message_number >= 1) {
-    // Run motor A forward for 2 seconds
-    digitalWrite(BIN1, HIGH);
-    digitalWrite(BIN2, LOW);
-    analogWrite(PWMB, 200);
-    delay(2000);
-    // Stop motor B
-    digitalWrite(BIN1, LOW);
-    digitalWrite(BIN2, LOW);
-    analogWrite(PWMB, 0);
-  }
+  // Stop for a moment
+  digitalWrite(AIN1, LOW);
+  digitalWrite(AIN2, LOW);
+  delay(50);
+  
+  // Return cutter
+  Serial.println("[cut] Returning");
+  digitalWrite(AIN1, LOW);
+  digitalWrite(AIN2, HIGH);
+  analogWrite(PWMA, 255);
+  delay(800); // Can overshoot cuzz of the spring limiter
+  
+  // Stop motor
+  digitalWrite(AIN1, LOW);
+  digitalWrite(AIN2, LOW);
+  analogWrite(PWMA, 0);
+  delay(200);
 }
