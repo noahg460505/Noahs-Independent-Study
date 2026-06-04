@@ -140,3 +140,30 @@ Just been working on CAD this week, I also printed some mounting standoffs for t
 ## Week 15
 ### Day 31 - 2026-05-12
 Updating documentation, then I'll further work on CAD
+
+### Day 32 - 2026-05-14
+I think CAD is complete now? I'll begin cutting next class.
+
+## Week 16
+### Day 33 - 2026-05-18
+I cut a bunch of stuff today, but the laser cutter was NOT happy with me today, hopefully can get the last of it cut next class.
+
+### Day 34 - 2026-05-20
+Finished cutting EVERYTHING, took the whole class because the laser cutter was angry again, but I have all the parts!
+
+### Day 35 - 2026-05-22
+Started assmebling some stuff today, will finish getting everything together next class.
+
+## Week 17
+### Day 36 - 2026-05-27
+EVERYTHING IS ASSEMBLED, YIPPEE!!!!!!
+
+### Day 37 - 2026-05-29
+Today I added graphite dry lubricant to make the drawer slide smoother. I made a huge mess, but it works better now.
+
+## Week 18
+### Day 38 - 2026-06-02
+Today I experimented with servo ejection and updated Arduino code.
+
+### Day 39 - 2026-06-04
+Documentation!!!!! Updating this Daily-Documentation.md, adding updated code, etc. Gonna start reflection too!
