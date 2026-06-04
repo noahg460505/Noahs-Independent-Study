@@ -178,7 +178,7 @@ void cutReceipt() {
   digitalWrite(AIN1, LOW);
   digitalWrite(AIN2, HIGH);
   analogWrite(PWMA, 255);
-  delay(800); // Can overshoot cuzz of the spring limiter
+  delay(800); // Can overshoot w/o breaking cuz of the spring limiter
   
   // Stop motor
   digitalWrite(AIN1, LOW);
