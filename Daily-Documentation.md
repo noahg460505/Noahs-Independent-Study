@@ -143,6 +143,14 @@ Updating documentation, then I'll further work on CAD
 
 ### Day 32 - 2026-05-14
 I think CAD is complete now? I'll begin cutting next class.
+![Final CAD Screenshot](Media/Final%20CAD%20Screenshots/final-cad-screenshots-8.png)
+![Final CAD Screenshot](Media/Final%20CAD%20Screenshots/final-cad-screenshots-7.png)
+![Final CAD Screenshot](Media/Final%20CAD%20Screenshots/final-cad-screenshots-6.png)
+![Final CAD Screenshot](Media/Final%20CAD%20Screenshots/final-cad-screenshots-5.png)
+![Final CAD Screenshot](Media/Final%20CAD%20Screenshots/final-cad-screenshots-4.png)
+![Final CAD Screenshot](Media/Final%20CAD%20Screenshots/final-cad-screenshots-3.png)
+![Final CAD Screenshot](Media/Final%20CAD%20Screenshots/final-cad-screenshots-2.png)
+![Final CAD Screenshot](Media/Final%20CAD%20Screenshots/final-cad-screenshots-1.png)
 
 ## Week 16
 ### Day 33 - 2026-05-18
