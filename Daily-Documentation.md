@@ -152,7 +152,7 @@ I cut a bunch of stuff today, but the laser cutter was NOT happy with me today, 
 Finished cutting EVERYTHING, took the whole class because the laser cutter was angry again, but I have all the parts!
 
 ### Day 35 - 2026-05-22
-Started assmebling some stuff today, will finish getting everything together next class.
+Started assembling some stuff today, will finish getting everything together next class.
 
 ## Week 17
 ### Day 36 - 2026-05-27
@@ -167,3 +167,7 @@ Today I experimented with servo ejection and updated Arduino code.
 
 ### Day 39 - 2026-06-04
 Documentation!!!!! Updating this Daily-Documentation.md, adding updated code, etc. Gonna start reflection too!
+
+## Week 19
+### Day 40 - 2026-06-08
+The end, I'm finishing up my documentation now.
