@@ -4,7 +4,8 @@
     - Arduino code
     - Serial interface and commands
     - Prototyping
-    - Designing
+    - CAD Design
+    - Glued my fingers together numerous times with CA glue
 
 ## What challenges did I overcome?
 The biggest challenge that I had to overcome was the cutter for the thermal printer. It took so, so many small tweaks, and it wasn't even something I originally thought I would need to design for this project! I fully forgot that you normally have to manually tear paper off of a thermal printer, it doesn't just detach when it's done printing. Another issue I had to overcome was getting the drawer to slide smoothly, I used graphic lubricant and made a huge mess to get it to slide smoothly, but it's smooth now!
